@@ -52,79 +52,104 @@ The project follows these main steps:
 9. Evaluate the model using multiple performance metrics.
 10. Calculate a fraud risk score for an individual transaction.
 
+
 ## Autoencoder Architecture
 
 The deep stacked autoencoder used in this project has the following architecture:
 
-```text
 29 → 24 → 16 → 12 → 6 → 12 → 16 → 24 → 29
-Encoder
+
+### Encoder
+
 29 → 24 → 16 → 12 → 6
-Decoder
+
+### Decoder
+
 6 → 12 → 16 → 24 → 29
 
 The latent representation contains 6 dimensions.
 
-Technologies Used
-Python
-PyTorch
-NumPy
-Pandas
-Scikit-learn
-Matplotlib
-Model Training
+## Technologies Used
+
+- Python
+- PyTorch
+- NumPy
+- Pandas
+- Scikit-learn
+- Matplotlib
+
+## Model Training
 
 The model was trained using:
 
-Optimizer: Adam
-Loss function: Mean Squared Error (MSE)
-Maximum epochs: 30
-Early stopping: Enabled
-Device: CPU
+- **Optimizer:** Adam
+- **Loss Function:** Mean Squared Error (MSE)
+- **Maximum Epochs:** 30
+- **Early Stopping:** Enabled
+- **Device:** CPU
 
 Training stopped early at epoch 24.
 
-Results
+## Results
 
 The model produced the following results on the test dataset:
 
-Metric	Result
-AUC-ROC	1.0000
-AUC-PR	1.0000
-Precision	1.0000
-Recall	1.0000
-F1-score	1.0000
-Detection Threshold	1.9467
-Reconstruction Error
-Transaction Type	Mean Reconstruction Error
-Normal	0.8445
-Fraud	5.1506
+| Metric | Result |
+|---|---:|
+| AUC-ROC | 1.0000 |
+| AUC-PR | 1.0000 |
+| Precision | 1.0000 |
+| Recall | 1.0000 |
+| F1-score | 1.0000 |
+| Detection Threshold | 1.9467 |
 
-The average reconstruction error for fraudulent transactions was approximately 6.10 times higher than that of normal transactions.
+### Reconstruction Error
 
-Confusion Matrix
-                 Predicted
-              Normal   Fraud
+| Transaction Type | Mean Reconstruction Error |
+|---|---:|
+| Normal | 0.8445 |
+| Fraud | 5.1506 |
 
-Actual Normal   2130      0
-Actual Fraud       0     49
-Fraud Risk Analysis
+The average reconstruction error for fraudulent transactions was approximately **6.10 times higher** than that of normal transactions.
+
+## Confusion Matrix
+
+Normal transactions correctly classified: 2130
+
+Fraudulent transactions correctly classified: 49
+
+False positives: 0
+
+False negatives: 0
+
+## Fraud Risk Analysis
 
 The program also performs individual transaction risk analysis.
 
-Example output:
+### Example Output
 
-Reconstruction Error : 0.6861
-Detection Threshold  : 1.9467
-Fraud Risk Score     : 35.25%
-Prediction            : NORMAL TRANSACTION
-Visualizations
+Reconstruction Error: 0.6861
 
-The project generates:
+Detection Threshold: 1.9467
 
-Transaction class distribution
-Training and validation loss
-Reconstruction error distribution
-Fraud detection using reconstruction error
-Confusion matrix
-ROC/Precision-Recall evaluation plots
+Fraud Risk Score: 35.25%
+
+Prediction: NORMAL TRANSACTION
+
+## Visualizations
+
+The project generates the following visualizations:
+
+- Transaction class distribution
+- Training and validation loss
+- Reconstruction error distribution
+- Fraud detection using reconstruction error
+- Confusion matrix
+- ROC/Precision-Recall evaluation plots
+
+## How to Run
+
+### 1. Install the required packages
+
+```bash
+pip install -r requirements.txt
